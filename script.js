@@ -47,7 +47,6 @@ yesOfCourseButton.addEventListener("click", () => {
   sendEmail(); // Send email
 });
 
-// Flower rain animation
 function startFlowerRain() {
   flowerRain.classList.remove("hidden");
 
