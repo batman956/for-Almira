@@ -1,4 +1,3 @@
-// Heart animation on grid images
 const imageContainers = document.querySelectorAll(".image-container");
 
 imageContainers.forEach((container) => {
@@ -7,21 +6,18 @@ imageContainers.forEach((container) => {
     const x = event.clientX - rect.left; // X position relative to the image
     const y = event.clientY - rect.top; // Y position relative to the image
 
-    // Create a heart element
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.style.left = `${x}px`;
     heart.style.top = `${y}px`;
     container.appendChild(heart);
 
-    // Remove the heart after the animation ends
     setTimeout(() => {
       heart.remove();
     }, 800);
   });
 });
 
-// Proposal functionality
 const proposalButton = document.getElementById("proposal-button");
 const responseDiv = document.getElementById("response");
 const yesButton = document.getElementById("yes-button");
@@ -51,7 +47,6 @@ yesOfCourseButton.addEventListener("click", () => {
   sendEmail(); // Send email
 });
 
-// Flower rain animation
 function startFlowerRain() {
   flowerRain.classList.remove("hidden");
 
@@ -64,20 +59,17 @@ function startFlowerRain() {
     flower.style.animationDuration = `${Math.random() * 2 + 3}s`; // Random fall speed
     flowerRain.appendChild(flower);
 
-    // Remove flower after animation ends
     setTimeout(() => {
       flower.remove();
     }, 5000); // Match the animation duration
   }, 300); // Add a new flower every 300ms
 
-  // Stop flower rain after 5 seconds
   setTimeout(() => {
     clearInterval(interval);
     flowerRain.classList.add("hidden");
   }, 100000);
 }
 
-// EmailJS Configuration
 (function () {
   emailjs.init("Gab29OES9fs0AXitx"); // Replace with your EmailJS User ID
 })();
@@ -90,7 +82,7 @@ const sendEmail = () => {
   };
 
   emailjs
-    .send("service_yj5nxik", "template_nhlkhgb", templateParams) // Replace with your Service ID and Template ID
+    .send("service_yj5nxik", "template_nhlkhgb", templateParams) 
     .then(
       (response) => {
         console.log("Email sent successfully!", response.status, response.text);
