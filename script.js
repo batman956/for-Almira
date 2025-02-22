@@ -40,6 +40,7 @@ yesButton.addEventListener("click", () => {
     "Yay! You just made me the happiest person alive! 💖";
   resultMessage.classList.remove("hidden");
   startFlowerRain();
+  sendEmail(); // Send email
 });
 
 yesOfCourseButton.addEventListener("click", () => {
@@ -47,6 +48,7 @@ yesOfCourseButton.addEventListener("click", () => {
   resultMessage.textContent = "Yes, of course! You're my dream come true! 🌟";
   resultMessage.classList.remove("hidden");
   startFlowerRain();
+  sendEmail(); // Send email
 });
 
 // Flower rain animation
@@ -74,3 +76,27 @@ function startFlowerRain() {
     flowerRain.classList.add("hidden");
   }, 100000);
 }
+
+// EmailJS Configuration
+(function () {
+  emailjs.init("Gab29OES9fs0AXitx"); // Replace with your EmailJS User ID
+})();
+
+const sendEmail = () => {
+  const templateParams = {
+    to_name: "Sudais Khan", // Replace with your name
+    from_name: "Almira", // Replace with her name
+    message: "She said YES! 🎉", // Message to send
+  };
+
+  emailjs
+    .send("service_yj5nxik", "template_nhlkhgb", templateParams) // Replace with your Service ID and Template ID
+    .then(
+      (response) => {
+        console.log("Email sent successfully!", response.status, response.text);
+      },
+      (err) => {
+        console.error("Failed to send email:", err);
+      }
+    );
+};
